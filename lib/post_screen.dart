@@ -3,36 +3,37 @@ import 'package:flutter/material.dart';
 import 'package:trainning_task1/MyCard.dart';
 import 'package:trainning_task1/Services.dart';
 import 'package:trainning_task1/UserDetails.dart';
+import 'package:trainning_task1/post_details.dart';
 import 'package:trainning_task1/user_model.dart';
 import 'package:trainning_task1/utils.dart';
 import 'post_model.dart';
 import 'user_model.dart';
 
-class Screen extends StatefulWidget {
+class post_screen extends StatefulWidget {
   @override
   _ScreenState createState() => _ScreenState();
 }
 
-class _ScreenState extends State<Screen> {
+class _ScreenState extends State<post_screen> {
   bool loading = true;
   List<Post> posts = [];
-  List<User> users = [];
   String title ="";
   int length = 0;
 
-  getuserlist() async {
-    title = "Users";
-    users = await user_services().get_users() ;
+  getpostslist() async {
+    title = "Posts";
+    posts = await postsservices().get_posts();
     loading = false;
-    setState(() {
-    });
-    length = users.length;
+    setState(() {});
+    length = posts.length;
+
   }
+
 
   @override
   void initState() {
     super.initState();
-    getuserlist();
+    getpostslist();
   }
 
   @override
@@ -43,19 +44,20 @@ class _ScreenState extends State<Screen> {
       ),
       body: loading
           ? Center(
-              child: CircularProgressIndicator(),
-            )
+        child: CircularProgressIndicator(),
+      )
           : ListView.builder(
-              itemCount: length,
-              itemBuilder: (BuildContext context, int index) {
-                return Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: InkWell(
-                      child:MyCard(content:"${users[index].name}"),
-                      onTap:(){pushpage(context, UserDetails(users[index]));},
-                  ),
-                );
-              }),
+          itemCount: length,
+          itemBuilder: (BuildContext context, int index) {
+            return Padding(
+              padding: EdgeInsets.all(8.0),
+                child:InkWell(
+                 child: MyCard(content:"${posts[index].title}"),
+                  onTap: (){pushpage(context,post_details(posts[index]));},
+                )
+
+            );
+          }),
     );
   }
 }

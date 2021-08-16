@@ -13,7 +13,7 @@ class _MyCardState extends State<MyCard> {
   Widget build(BuildContext context) {
     return Card(
       child: Container(
-        height: 40,
+        height: 100,
         child: Padding(
           padding: EdgeInsets.all(8.0),
           child: Center(child: Text(widget.content),),
