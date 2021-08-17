@@ -1,9 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.trainning_task1">
+    package="com.iti.trainning_task1">
    <application
         android:label="trainning_task1"
         android:icon="@mipmap/ic_launcher">
-        <activity
+       <uses-permission android:name="android.permission.INTERNET" />
+       <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"

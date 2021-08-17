@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:trainning_task1/Screen.dart';
-import 'package:trainning_task1/post_screen.dart';
+import 'package:trainning_task1/screens/Screen.dart';
+import 'package:trainning_task1/screens/post_screen.dart';
 import 'package:trainning_task1/utils.dart';
 
 
@@ -45,14 +45,14 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             ElevatedButton(
               onPressed: () {
-                pushpage(context, Screen());
+                Pushpage(context, Screen());
               },
               child: Text("users_screen"),
             ),
             SizedBox(height: 20,),
             ElevatedButton(
               onPressed: () {
-                pushpage(context, post_screen());
+                Pushpage(context, post_screen());
               },
               child: Text("posts_screen"),
             ),
